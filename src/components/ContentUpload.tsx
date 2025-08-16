@@ -261,6 +261,9 @@ export function ContentUpload({
       severity: alert.severity
     }))
 
+    onContentProcessed(quiz, factChecks)
+  }
+
   const handleTextSubmit = () => {
     if (!textContent.trim()) {
       toast.error("Please enter some content to process")
