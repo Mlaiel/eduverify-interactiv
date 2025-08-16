@@ -20,6 +20,7 @@ import type { Quiz, FactCheckResult, AccessibilityMode, ContentUploadData } from
 interface ContentUploadProps {
   onContentProcessed: (quiz: Quiz, factChecks: FactCheckResult[]) => void
   onStartProcessing: () => void
+  onProcessingError: () => void
   isProcessing: boolean
   accessibilityMode: AccessibilityMode
 }
@@ -27,6 +28,7 @@ interface ContentUploadProps {
 export function ContentUpload({ 
   onContentProcessed, 
   onStartProcessing, 
+  onProcessingError,
   isProcessing,
   accessibilityMode 
 }: ContentUploadProps) {
@@ -143,7 +145,7 @@ export function ContentUpload({
       toast.error("Failed to process content", {
         description: "Please try again or check your content format"
       })
-      onStartProcessing() // Reset processing state
+      onProcessingError()
     }
   }
 

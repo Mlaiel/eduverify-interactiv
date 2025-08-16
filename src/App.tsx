@@ -11,6 +11,7 @@ import { QuizSession } from "./components/QuizSession"
 import { AccessibilityControls } from "./components/AccessibilityControls"
 import { FactCheckDisplay } from "./components/FactCheckDisplay"
 import { Header } from "./components/Header"
+import { AppHealthCheck } from "./components/AppHealthCheck"
 import { useKV } from "@github/spark/hooks"
 import { Toaster } from "sonner"
 import type { Quiz, AccessibilityMode, FactCheckResult } from "./types"
@@ -33,6 +34,10 @@ function App() {
     setFactCheckResults([])
   }
 
+  const handleProcessingError = () => {
+    setIsProcessing(false)
+  }
+
   const handleQuizComplete = () => {
     setCurrentQuiz(null)
   }
@@ -49,6 +54,13 @@ function App() {
       <main className="container mx-auto px-4 py-8 max-w-4xl">
         {!currentQuiz ? (
           <div className="space-y-8">
+            {/* Development health check */}
+            {import.meta.env.DEV && (
+              <div className="mb-8">
+                <AppHealthCheck />
+              </div>
+            )}
+            
             <div className="text-center space-y-4">
               <h1 className="text-3xl md:text-4xl font-bold text-primary">
                 Transform Learning with AI
@@ -62,6 +74,7 @@ function App() {
             <ContentUpload 
               onContentProcessed={handleContentProcessed}
               onStartProcessing={handleStartProcessing}
+              onProcessingError={handleProcessingError}
               isProcessing={isProcessing}
               accessibilityMode={accessibilityMode}
             />
