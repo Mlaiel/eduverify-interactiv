@@ -12,14 +12,17 @@ import { AccessibilityControls } from "./components/AccessibilityControls"
 import { FactCheckDisplay } from "./components/FactCheckDisplay"
 import { Header } from "./components/Header"
 import { AppHealthCheck } from "./components/AppHealthCheck"
+import { LanguageSelector } from "./components/LanguageSelector"
 import { useKV } from "@github/spark/hooks"
 import { Toaster } from "sonner"
-import type { Quiz, AccessibilityMode, FactCheckResult } from "./types"
+import type { Quiz, AccessibilityMode, FactCheckResult, LanguageCode } from "./types"
 
 function App() {
   const [currentQuiz, setCurrentQuiz] = useState<Quiz | null>(null)
   const [factCheckResults, setFactCheckResults] = useState<FactCheckResult[]>([])
   const [accessibilityMode, setAccessibilityMode] = useKV<AccessibilityMode>("accessibility-mode", "standard")
+  const [preferredLanguage, setPreferredLanguage] = useKV<LanguageCode>("preferred-language", "en")
+  const [preferredDialect, setPreferredDialect] = useKV<string>("preferred-dialect", "")
   const [isProcessing, setIsProcessing] = useState(false)
 
   const handleContentProcessed = (quiz: Quiz, factChecks: FactCheckResult[]) => {
@@ -42,6 +45,11 @@ function App() {
     setCurrentQuiz(null)
   }
 
+  const handleLanguageChange = (language: LanguageCode, dialect?: string) => {
+    setPreferredLanguage(language)
+    setPreferredDialect(dialect || "")
+  }
+
   return (
     <div className={`min-h-screen bg-background text-foreground ${accessibilityMode === 'visual-impaired' ? 'text-lg' : ''}`}>
       <Header />
@@ -51,7 +59,7 @@ function App() {
         onModeChange={setAccessibilityMode}
       />
 
-      <main className="container mx-auto px-4 py-8 max-w-4xl">
+      <main className="container mx-auto px-4 py-8 max-w-6xl">
         {!currentQuiz ? (
           <div className="space-y-8">
             {/* Development health check */}
@@ -62,13 +70,20 @@ function App() {
             )}
             
             <div className="text-center space-y-4">
-              <h1 className="text-3xl md:text-4xl font-bold text-primary">
-                Transform Learning with AI
+              <h1 className="text-3xl md:text-5xl font-bold text-primary">
+                AI Professor for Global Education
               </h1>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Upload any educational content and we'll create interactive quizzes, 
-                verify facts, and ensure accessible learning for everyone.
+              <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+                Transform any educational content into interactive quizzes with professional-level explanations. 
+                Available in 100+ languages with real-time fact-checking and universal accessibility.
               </p>
+              <div className="flex items-center justify-center gap-4 flex-wrap text-sm text-muted-foreground">
+                <span>🌍 Multilingual</span>
+                <span>🎓 Professional Level</span>
+                <span>♿ Fully Accessible</span>
+                <span>🔍 Fact-Checked</span>
+                <span>🎙️ Live Lecture Support</span>
+              </div>
             </div>
 
             <ContentUpload 
