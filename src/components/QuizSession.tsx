@@ -386,6 +386,9 @@ export function QuizSession({ quiz, onComplete, accessibilityMode }: QuizSession
           </CardContent>
         </Card>
       </div>
+    )
+  }
+
   // Main quiz interface
   return (
     <div className="w-full max-w-2xl mx-auto space-y-6">
