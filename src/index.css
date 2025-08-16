@@ -1,1 +1,93 @@
-/* This is where custom CSS goes */
+/*
+ * Learning-Agent - AI4Good for Education
+ * Owner: Fahed Mlaiel
+ * Contact: mlaiel@live.de
+ * Notice: "Attribution to Fahed Mlaiel is mandatory in all copies, forks, and derivatives."
+ * 
+ * Universal theme system for accessible educational interface
+ */
+
+@import 'tailwindcss';
+@import "tw-animate-css";
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+}
+
+:root {
+  /* Educational Blue & Orange Color Palette */
+  --background: oklch(0.98 0.01 240);
+  --foreground: oklch(0.25 0.15 240);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.25 0.15 240);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.25 0.15 240);
+
+  /* Primary: Deep Educational Blue */
+  --primary: oklch(0.45 0.15 240);
+  --primary-foreground: oklch(1 0 0);
+
+  /* Secondary: Light Academic Gray */
+  --secondary: oklch(0.95 0.02 240);
+  --secondary-foreground: oklch(0.25 0.15 240);
+
+  /* Muted: Subtle Gray */
+  --muted: oklch(0.92 0.02 240);
+  --muted-foreground: oklch(0.55 0.08 240);
+
+  /* Accent: Warm Learning Orange */
+  --accent: oklch(0.65 0.15 45);
+  --accent-foreground: oklch(1 0 0);
+
+  /* Status Colors */
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(1 0 0);
+
+  /* UI Elements */
+  --border: oklch(0.88 0.03 240);
+  --input: oklch(0.88 0.03 240);
+  --ring: oklch(0.45 0.15 240);
+
+  /* Educational Theme Specific */
+  --success: oklch(0.55 0.12 140);
+  --success-foreground: oklch(1 0 0);
+  --warning: oklch(0.75 0.15 85);
+  --warning-foreground: oklch(0.2 0.1 85);
+  --info: oklch(0.6 0.12 220);
+  --info-foreground: oklch(1 0 0);
+
+  --radius: 0.75rem;
+}
+
+/* Typography for accessibility */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Accessible focus indicators */
+.focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --border: oklch(0.1 0 0);
+    --ring: oklch(0.1 0 0);
+  }
+}
