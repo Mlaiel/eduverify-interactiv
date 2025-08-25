@@ -10,6 +10,7 @@ const projectRoot = process.env.PROJECT_ROOT || import.meta.dirname
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: process.env.NODE_ENV === 'production' ? '/eduverify-interactiv/' : '/',
   plugins: [
     react(),
     tailwindcss(),
@@ -22,4 +23,17 @@ export default defineConfig({
       '@': resolve(projectRoot, 'src')
     }
   },
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          ui: ['@radix-ui/react-dialog', '@radix-ui/react-tabs', '@radix-ui/react-select']
+        }
+      }
+    }
+  }
 });

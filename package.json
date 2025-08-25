@@ -7,9 +7,11 @@
         "dev": "vite",
         "kill": "fuser -k 5000/tcp",
         "build": "tsc -b --noCheck && vite build",
+        "build:github": "NODE_ENV=production vite build",
         "lint": "eslint .",
         "optimize": "vite optimize",
-        "preview": "vite preview"
+        "preview": "vite preview",
+        "deploy": "npm run build:github && gh-pages -d dist"
     },
     "dependencies": {
         "@github/spark": "^0.39.0",

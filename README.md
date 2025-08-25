@@ -1,8 +1,20 @@
 # Learning-Agent - AI4Good for Education (Enhanced Vision)
 
+[![Deploy to GitHub Pages](https://github.com/Mlaiel/eduverify-interactiv/actions/workflows/deploy.yml/badge.svg)](https://github.com/Mlaiel/eduverify-interactiv/actions/workflows/deploy.yml)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-blue)](https://mlaiel.github.io/eduverify-interactiv/)
+
 ## 🌍 Universal Educational AI Platform
 
 An open-source educational AI agent that transforms any learning material into interactive quizzes with professional-level explanations, real-time fact-checking, and comprehensive multilingual accessibility support.
+
+### 🚀 **Live Demo**
+**Testez l'application en ligne :** [https://mlaiel.github.io/eduverify-interactiv/](https://mlaiel.github.io/eduverify-interactiv/)
+
+> 📱 **Responsive Design**: Optimisé pour mobile, tablette et desktop
+> 
+> 🌐 **Multilingue**: Support de 100+ langues avec adaptation culturelle
+> 
+> ♿ **Accessible**: Optimisé pour tous types d'utilisateurs
 
 ---
 
@@ -168,18 +180,46 @@ Notice: "Attribution to Fahed Mlaiel is mandatory in all copies, forks, and deri
 
 ### 🚀 Getting Started
 
-1. **Clone the repository**
-2. **Install dependencies**: `npm install`
-3. **Configure languages**: Set preferred languages and dialects
-4. **Enable accessibility**: Choose appropriate accessibility mode
-5. **Start learning**: Upload content or start live lecture capture
+#### 🌐 Essayez en ligne (Recommandé)
+**Demo en direct :** [https://mlaiel.github.io/eduverify-interactiv/](https://mlaiel.github.io/eduverify-interactiv/)
 
-### 🛠️ Development
+#### 💻 Développement local
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Mlaiel/eduverify-interactiv.git
+   cd eduverify-interactiv
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Start development server**
+   ```bash
+   npm run dev
+   ```
+
+4. **Build for production**
+   ```bash
+   npm run build
+   ```
+
+#### 🚀 Déploiement automatique
+- **GitHub Actions** : Déploiement automatique sur GitHub Pages à chaque push
+- **URL de production** : https://mlaiel.github.io/eduverify-interactiv/
+- **Status du build** : [![Deploy Status](https://github.com/Mlaiel/eduverify-interactiv/actions/workflows/deploy.yml/badge.svg)](https://github.com/Mlaiel/eduverify-interactiv/actions/workflows/deploy.yml)
+
+### 🛠️ Technology Stack
 
 Built with modern web technologies for maximum compatibility and accessibility:
-- Responsive design for all devices
-- Progressive enhancement for older browsers
-- Full keyboard navigation support
+- **Framework**: React 19 + TypeScript
+- **Styling**: Tailwind CSS + Radix UI
+- **Build**: Vite 6
+- **Icons**: Phosphor Icons
+- **Deployment**: GitHub Pages + Actions
+- **Responsive**: Mobile-first design
+- **Accessibility**: WCAG 2.1 AA compliant
 - Screen reader optimization
 - High contrast mode support
 

@@ -9,6 +9,7 @@
 
 @import 'tailwindcss';
 @import "tw-animate-css";
+@import './styles/responsive.css';
 
 @layer base {
   * {
@@ -62,17 +63,80 @@
   --radius: 0.75rem;
 }
 
-/* Typography for accessibility */
+/* Typography for accessibility and responsiveness */
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 16px;
   line-height: 1.6;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Mobile-first responsive typography */
+@media (max-width: 767px) {
+  body {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+}
+
+/* Enhanced touch targets for mobile */
+@media (max-width: 767px) {
+  button, 
+  [role="button"],
+  input,
+  select,
+  textarea {
+    min-height: 44px; /* Apple's recommended touch target size */
+    min-width: 44px;
+  }
+}
+
+/* Improved scrollbars for better UX */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--muted) var(--background);
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--muted);
+  border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-foreground);
 }
 
 /* Accessible focus indicators */
 .focus-visible {
   outline: 2px solid var(--ring);
   outline-offset: 2px;
+}
+
+/* Enhanced focus styles for better accessibility */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--ring) 20%, transparent);
 }
 
 /* Reduced motion for accessibility */

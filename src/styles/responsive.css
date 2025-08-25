@@ -1,0 +1,225 @@
+/*
+ * Responsive Enhancement Styles
+ * Owner: Fahed Mlaiel
+ * Optimized for Mobile, Tablet, and Desktop devices
+ */
+
+/* Mobile-first approach with progressive enhancement */
+
+/* Mobile Optimizations (320px - 767px) */
+@media (max-width: 767px) {
+  /* Ensure containers don't overflow */
+  .container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* Stack form elements vertically on mobile */
+  .grid-responsive {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  /* Larger touch targets for mobile */
+  button,
+  [role="button"],
+  input,
+  select,
+  textarea {
+    min-height: 44px;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+
+  /* Mobile-optimized spacing */
+  .space-y-mobile {
+    & > * + * {
+      margin-top: 1rem !important;
+    }
+  }
+
+  /* Hide non-essential content on mobile */
+  .hidden-mobile {
+    display: none !important;
+  }
+
+  /* Full-width elements on mobile */
+  .mobile-full-width {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  /* Optimized text sizes for mobile */
+  .text-responsive-mobile {
+    font-size: 0.875rem !important;
+    line-height: 1.4 !important;
+  }
+
+  /* Better modal/dialog positioning on mobile */
+  [role="dialog"] {
+    margin: 1rem !important;
+    max-height: calc(100vh - 2rem) !important;
+    overflow-y: auto !important;
+  }
+}
+
+/* Tablet Optimizations (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .container {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+
+  /* Two-column layouts for tablets */
+  .tablet-two-cols {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 1.5rem !important;
+  }
+
+  /* Tablet-specific touch optimizations */
+  button,
+  [role="button"] {
+    min-height: 40px;
+    padding: 0.75rem 1.5rem;
+  }
+
+  /* Show essential content on tablet */
+  .show-tablet {
+    display: block !important;
+  }
+
+  /* Tablet spacing adjustments */
+  .space-y-tablet {
+    & > * + * {
+      margin-top: 1.5rem !important;
+    }
+  }
+}
+
+/* Desktop Optimizations (1024px+) */
+@media (min-width: 1024px) {
+  .container {
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+  }
+
+  /* Multi-column layouts for desktop */
+  .desktop-three-cols {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 2rem !important;
+  }
+
+  /* Desktop hover effects */
+  .hover-desktop:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+  }
+
+  /* Show desktop-only content */
+  .show-desktop {
+    display: block !important;
+  }
+
+  /* Desktop spacing */
+  .space-y-desktop {
+    & > * + * {
+      margin-top: 2rem !important;
+    }
+  }
+}
+
+/* High DPI / Retina Display Optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Sharper borders and shadows */
+  .retina-optimized {
+    border-width: 0.5px;
+    box-shadow: 0 0.5px 1px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Landscape phone optimizations */
+@media (max-height: 500px) and (orientation: landscape) {
+  .landscape-compact {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+
+  .landscape-hide {
+    display: none !important;
+  }
+}
+
+/* Print optimizations */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  .print-optimized {
+    color: black !important;
+    background: white !important;
+    box-shadow: none !important;
+  }
+}
+
+/* Loading states with proper animations */
+.loading-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Safe area insets for devices with notches */
+@supports (padding: max(0px)) {
+  .safe-area-inset {
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+    padding-top: max(1rem, env(safe-area-inset-top));
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+}
+
+/* Focus improvements for keyboard navigation */
+.focus-ring:focus-visible {
+  outline-offset: 2px;
+  outline: 2px solid var(--ring);
+  outline-style: solid;
+}
+
+/* Smooth scrolling improvements */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Custom scrollbar for webkit browsers */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: var(--muted);
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--muted-foreground);
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
